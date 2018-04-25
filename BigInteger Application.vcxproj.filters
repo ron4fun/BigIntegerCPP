@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Security">
+      <UniqueIdentifier>{379a1d05-6652-4f33-8f05-0dea0870c1e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{4298b238-4ade-46a1-bdbe-8ce9791efe30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rng">
+      <UniqueIdentifier>{312d2272-672e-438b-954e-5779790703ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{884c820d-2e06-46ba-b5a3-8b0e5b7ad673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Unittest">
+      <UniqueIdentifier>{933f736f-a4d0-48a6-ab06-18e7657f3723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Randoms">
+      <UniqueIdentifier>{f661ca99-0bca-449b-b1f3-670ca1d26e2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Randoms">
+      <UniqueIdentifier>{374d5655-44b1-4216-aee7-e7310133ea2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Security">
+      <UniqueIdentifier>{eaaa1dc1-9104-443c-9156-151135848811}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rng">
+      <UniqueIdentifier>{5afb8a58-c0ff-43dc-85cb-911b706b82af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{6309af69-ae70-41df-8779-124b1d0bc1c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base">
+      <UniqueIdentifier>{c0fdb75b-eb11-4f77-8912-067e8817db5d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Security\Random.h">
+      <Filter>Security</Filter>
+    </ClInclude>
+    <ClInclude Include="Security\SecureRandom.h">
+      <Filter>Security</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\ICryptoApiRandomGenerator.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\IRandom.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\IRandomGenerator.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\IRandomNumberGenerator.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\ISecureRandom.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\HlpBits.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\NumberStyles.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Unittest\FullTest.h">
+      <Filter>Unittest</Filter>
+    </ClInclude>
+    <ClInclude Include="Rng\PCGRandomNumberGenerator.h">
+      <Filter>Rng</Filter>
+    </ClInclude>
+    <ClInclude Include="Rng\RandomNumberGenerator.h">
+      <Filter>Rng</Filter>
+    </ClInclude>
+    <ClInclude Include="Rng\CryptoApiRandomGenerator.h">
+      <Filter>Rng</Filter>
+    </ClInclude>
+    <ClInclude Include="Randoms\PcgRandomMinimal.h">
+      <Filter>Randoms</Filter>
+    </ClInclude>
+    <ClInclude Include="Base\BigInteger.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BigIntegerWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Randoms\PcgRandomMinimal.cpp">
+      <Filter>Source Files\Randoms</Filter>
+    </ClCompile>
+    <ClCompile Include="Security\Random.cpp">
+      <Filter>Source Files\Security</Filter>
+    </ClCompile>
+    <ClCompile Include="Security\SecureRandom.cpp">
+      <Filter>Source Files\Security</Filter>
+    </ClCompile>
+    <ClCompile Include="Rng\RandomNumberGenerator.cpp">
+      <Filter>Source Files\Rng</Filter>
+    </ClCompile>
+    <ClCompile Include="BigInteger Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Base\BigInteger.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BigIntegerWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
