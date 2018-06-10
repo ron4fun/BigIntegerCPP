@@ -1074,6 +1074,35 @@ int32_t BigInteger::GetLowestSetBit() const
 	return GetLowestSetBitMaskFirst(-1);
 }
 
+void BigInteger::ToString(ostringstream &sl, int32_t radix, vector<BigInteger> &moduli, int32_t scale, BigInteger &pos)
+{
+	char temp[25];
+	vector<BigInteger> qr;
+
+	if (pos.GetBitLength() < 64)
+	{
+		_ui64toa_s(uint64_t(pos.GetInt64Value()), &(temp[0]), 25, radix);
+		
+		uint32_t len = sl.str().size();
+		if ((len > 1) || ((len == 1) && (sl.str()[0] != '-')))
+		{
+			AppendZeroExtendedString(sl, temp, 1 << scale);
+		}
+		else if (pos.GetSignValue() != 0)
+		{
+			sl << temp;
+		}
+
+		return;
+	}
+
+	--scale;
+	qr = pos.DivideAndRemainder(moduli[scale]);
+
+	ToString(sl, radix, moduli, scale, qr[0]);
+	ToString(sl, radix, moduli, scale, qr[1]);
+}
+
 string BigInteger::ToString() const
 {
 	return ToString(10);
@@ -1081,12 +1110,11 @@ string BigInteger::ToString() const
 
 string BigInteger::ToString(const int32_t radix) const
 {
-	int32_t firstNonZero, pos, mask, bits, i, exponent;
-	int64_t limit, power;
+	int32_t firstNonZero, pos, mask, bits, i, scale;
 	ostringstream sl;
 	vector<string> s;
-	BigInteger u, q, bigPower;
-	vector<BigInteger> qr;
+	BigInteger u, q, r;
+	vector<BigInteger> moduli;
 	
 	// TODO Make this method work for other radices (ideally 2 <= radix <= 36 as in Java)
 	switch (radix)
@@ -1182,39 +1210,17 @@ string BigInteger::ToString(const int32_t radix) const
 			return sl.str();
 		}
 
-		// Based on algorithm 1a from chapter 4.4 in Seminumerical Algorithms (Knuth)
-
-		// Work out the largest power of 'rdx' that is a positive 64-bit integer
 		// TODO possibly cache power/exponent against radix?
-		limit = INT64_MAX / radix;
-		power = radix;
-		exponent = 1;
-		while (power <= limit)
+		r = ValueOf(radix);
+		while (r.CompareTo(q) <= 0)
 		{
-			power = power * radix;
-			exponent++;
+			moduli.push_back(r);
+			r = r.Square();
 		}
 
-		bigPower = BigInteger::ValueOf(power);
+		scale = moduli.size();
 
-		while (q.CompareTo(bigPower) >= 0)
-		{
-			qr = q.DivideAndRemainder(bigPower);
-			
-			_ui64toa_s(uint64_t(qr[1].GetInt64Value()), &(temp[0]), 25, radix);
-			s.push_back(temp);
-			q = qr[0];
-		}
-
-		sl << uint64_t(q.GetInt64Value());
-
-		i = s.size() - 1;
-		while (i >= 0)
-		{
-			AppendZeroExtendedString(sl, s[i], exponent);
-			i--;
-		}
-
+		ToString(sl, radix, moduli, scale, q);
 	}						
 
 	return sl.str();
@@ -3333,86 +3339,42 @@ BigInteger BigInteger::CreateValueOf(const int64_t value)
 	return CreateUValueOf(uint64_t(value));
 }
 
-string BigInteger::IntToBin(const int64_t input)
+string BigInteger::IntToBin(const int64_t _input)
 {
-	int64_t Quotient;
-	int32_t Size;
-	string result = "";
+	int64_t input = _input;
+	vector<char> bits;
 
-	Quotient = input;
-
-	if ((input >= INT8_MIN) && (input <= INT8_MAX))
-		Size = 8;
-	
-	else if ((input >= INT16_MIN) && (input <= INT16_MAX))
-		Size = 16;
-
-	else if ((input >= INT32_MIN) && (input <= INT32_MAX))
-		Size = 32;
-
-	else if ((input >= INT64_MIN) && (input <= INT64_MAX))
-		Size = 64;
-	
-	else
-		throw invalid_argument("");
-
-
-	if (Quotient < 0)
+	while (input != 0)
 	{
-		// sets the leading bit to 0, making Quotient positive
-		Quotient = (Quotient & (Bits::Asr64(INT64_MAX, 1)));
-		Quotient = (~Quotient) + 1; // flips all bits and increments by 1
+		if ((input & 1) == 1) bits.push_back('1');
+		else
+			bits.push_back('0');
+
+		input = input >> 1;
 	}
 
-	do
-	{
-		result = result + char((uint64_t(Quotient) % 2) + '0');
-
-		Quotient = Quotient / 2;
-	} while (!((Quotient == 0) || (result.size() == Size)));
+	string result(bits.begin(), bits.end());
 
 	reverse(result.begin(), result.end());
 
 	return result;
 }
 
-string BigInteger::IntToOctal(const int64_t input)
+string BigInteger::IntToOctal(const int64_t _input)
 {
-	int64_t Quotient;
-	int32_t Size;
-	string result = "";
+	int64_t input = _input;
+	vector<char> bits;
+	char temp[25];
 
-	Quotient = input;
-
-	if ((input >= INT8_MIN) && (input <= INT8_MAX))
-		Size = 8;
-
-	else if ((input >= INT16_MIN) && (input <= INT16_MAX))
-		Size = 16;
-
-	else if ((input >= INT32_MIN) && (input <= INT32_MAX))
-		Size = 32;
-
-	else if ((input >= INT64_MIN) && (input <= INT64_MAX))
-		Size = 64;
-
-	else
-		throw invalid_argument("");
-
-
-	if (Quotient < 0)
+	while (input != 0)
 	{
-		// sets the leading bit to 0, making Quotient positive
-		Quotient = (Quotient & (Bits::Asr64(INT64_MAX, 1)));
-		Quotient = (~Quotient) + 1; // flips all bits and increments by 1
+		_ultoa_s(uint64_t(input & 7), &(temp[0]), 25, 10);
+	
+		bits.push_back(temp[0]);
+		input = input >> 3;
 	}
 
-	do
-	{
-		result = result + char((uint64_t(Quotient) % 8) + '0');
-
-		Quotient = Quotient / 8;
-	} while (!((Quotient == 0) || (result.size() == Size)));
+	string result(bits.begin(), bits.end());
 
 	reverse(result.begin(), result.end());
 

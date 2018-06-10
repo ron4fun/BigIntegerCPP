@@ -248,6 +248,8 @@ private:
 
 	inline static void AppendZeroExtendedString(ostringstream &sl,	const string s, const int32_t minLength);
 
+	static void ToString(ostringstream &sl, int32_t radix, vector<BigInteger> &moduli, int32_t scale, BigInteger &pos);
+
 	static BigInteger CreateUValueOf(const uint64_t value);
 	static BigInteger CreateValueOf(const int64_t value);
 
