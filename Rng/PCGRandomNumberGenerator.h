@@ -34,11 +34,9 @@ public:
 	{
 		int64_t i;
 		
-		i = data.size();
-		while (i > 0)
+		for (i = data.size() - 1; i >= 0; i--)
 		{
-			data[i - 1] = uint8_t(Pcg::NextInt(INT32_MIN, INT32_MAX));
-			i--;
+			data[i] = uint8_t(Pcg::NextInt(INT32_MIN, INT32_MAX));
 		}
 	}
 
