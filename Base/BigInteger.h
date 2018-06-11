@@ -253,9 +253,9 @@ private:
 	static BigInteger CreateUValueOf(const uint64_t value);
 	static BigInteger CreateValueOf(const int64_t value);
 
-	static string IntToBin(const int64_t input);
+	static string IntToBin(const int32_t input);
 
-	static string IntToOctal(const int64_t input);
+	static string IntToOctal(const int32_t input);
 
 private:
 	BigInteger(const int32_t signum, const vector<int32_t> &mag, const bool checkMag);

@@ -1154,7 +1154,7 @@ string BigInteger::ToString(const int32_t radix) const
 	case 2:
 		pos = firstNonZero;
 
-		sl << BigInteger::IntToBin(int64_t(magnitude[pos]));
+		sl << BigInteger::IntToBin(int32_t(magnitude[pos]));
 		pos++;
 		while (pos < magnitude.size())
 		{
@@ -1170,12 +1170,12 @@ string BigInteger::ToString(const int32_t radix) const
 
 		while (bits > 30)
 		{
-			s.push_back(BigInteger::IntToOctal(int64_t(u.GetInt32Value() & mask)));
+			s.push_back(BigInteger::IntToOctal(int32_t(u.GetInt32Value() & mask)));
 			u = u.ShiftRight(30);
 			bits = bits - 30;
 		}
 
-		sl << BigInteger::IntToOctal(int64_t(u.GetInt32Value()));
+		sl << BigInteger::IntToOctal(int32_t(u.GetInt32Value()));
 		i = s.size() - 1;
 		while (i >= 0)
 		{
@@ -3339,9 +3339,9 @@ BigInteger BigInteger::CreateValueOf(const int64_t value)
 	return CreateUValueOf(uint64_t(value));
 }
 
-string BigInteger::IntToBin(const int64_t _input)
+string BigInteger::IntToBin(const int32_t _input)
 {
-	int64_t input = _input;
+	int32_t input = _input;
 	vector<char> bits;
 
 	while (input != 0)
@@ -3350,7 +3350,7 @@ string BigInteger::IntToBin(const int64_t _input)
 		else
 			bits.push_back('0');
 
-		input = input >> 1;
+		input = uint32_t(input) >> 1;
 	}
 
 	string result(bits.begin(), bits.end());
@@ -3360,9 +3360,9 @@ string BigInteger::IntToBin(const int64_t _input)
 	return result;
 }
 
-string BigInteger::IntToOctal(const int64_t _input)
+string BigInteger::IntToOctal(const int32_t _input)
 {
-	int64_t input = _input;
+	int32_t input = _input;
 	vector<char> bits;
 	char temp[25];
 
@@ -3371,7 +3371,7 @@ string BigInteger::IntToOctal(const int64_t _input)
 		_ultoa_s(uint64_t(input & 7), &(temp[0]), 25, 10);
 	
 		bits.push_back(temp[0]);
-		input = input >> 3;
+		input = uint32_t(input) >> 3;
 	}
 
 	string result(bits.begin(), bits.end());
