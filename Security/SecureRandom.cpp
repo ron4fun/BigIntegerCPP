@@ -167,6 +167,9 @@ void SecureRandom::Boot()
 	nanoseconds nn = duration_cast<nanoseconds>(now.time_since_epoch());
 	
 	Counter = nn.count();
-	master = make_shared<SecureRandom>(make_shared<CryptoApiRandomGenerator>());
+	if (master == nullptr)
+	{
+		master = make_shared<SecureRandom>(make_shared<CryptoApiRandomGenerator>());
+	}
 	DoubleScale = pow(2.0, 64.0);
 }
