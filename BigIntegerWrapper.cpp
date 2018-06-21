@@ -13,7 +13,6 @@
 
 // ////////////////////////////////////////////////////// ///////////////
 
-#include "stdafx.h"
 #include "BigIntegerWrapper.h"
 #include "Base/BigInteger.h"
 

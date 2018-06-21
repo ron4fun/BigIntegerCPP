@@ -13,7 +13,6 @@
 
 // ////////////////////////////////////////////////////// ///////////////
 
-#include "stdafx.h"
 #include "Random.h"
 
 vector<int32_t> Random::SeedArray = vector<int32_t>();

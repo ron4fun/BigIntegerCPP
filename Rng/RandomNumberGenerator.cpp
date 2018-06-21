@@ -13,7 +13,6 @@
 
 // ////////////////////////////////////////////////////// ///////////////
 
-#include "stdafx.h"
 #include "RandomNumberGenerator.h"
 #include "PCGRandomNumberGenerator.h"
 

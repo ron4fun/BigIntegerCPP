@@ -13,7 +13,6 @@
 
 // ////////////////////////////////////////////////////// ///////////////
 
-#include "stdafx.h"
 #include "SecureRandom.h"
 #include "../Utils/HlpBits.h"
 #include "../Rng/CryptoApiRandomGenerator.h"

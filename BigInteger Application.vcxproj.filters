@@ -107,9 +107,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Randoms\PcgRandomMinimal.cpp">
       <Filter>Source Files\Randoms</Filter>
     </ClCompile>

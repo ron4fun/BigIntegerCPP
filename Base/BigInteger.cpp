@@ -13,7 +13,6 @@
 
 // ////////////////////////////////////////////////////// ///////////////
 
-#include "stdafx.h"
 #include "BigInteger.h"
 #include "..\Security\SecureRandom.h"
 #include "..\Utils\NumberStyles.h"
