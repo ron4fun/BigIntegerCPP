@@ -58,44 +58,22 @@ Note:
 
 **Unittests:**
      
-    You can find all the unit tests in the Unittest folder. To run it, change the name
-	or comment out the `main()` function of the project and then include it. 
-	Then compile and run the program.
-	
-	#include <iostream>
-	//#include "Base/BigInterger.h"
-	//#include "BigIntegerWrapper.h"
-	#include "Unittest\FullTest.h" // Path to unittests
-	
-	using namespace std;
-	
-	/*
-	int main()
-	{
-		BigInteger::Boot();
-		
-		BigInteger two("2");
-		BigInteger result = two.Pow(20);
+You can find all the unit tests in the Unittest folder. 
+To run the unit tests, you should have [boost library](http://www.boost.org/) installed in your workstation.
 
-		cout << result.ToString(2) << endl; // output string in Base 2
-
-	    return 0;
-	} // end main
-	*/
 
 **Special Note:**
      
-    You may have noticed that this library needs to Boot firstly before you can begin
-	to use it else it will crash. 
-	So, I wrote a wrapper around the BigInteger library called `BigIntegerWrapper` for
-	those who feel they might forget to Boot the library before using it.
+   You may have noticed that this library needs to Boot firstly before you can begin to use it else it will crash. So, I wrote a wrapper around the BigInteger library called `BigIntegerWrapper` for those who feel they might forget to Boot the library before using it.
 
 ###License
 
 This "Software" is Licensed Under  **`MIT License (MIT)`** .
     
+#### Tip Jar
+* :dollar: **Bitcoin**: `1Mcci95WffSJnV6PsYG7KD1af1gDfUvLe6`
 
 Conclusion
 --------------------------------------------------
 
-    Special thanks to Xor-el for making this library avialable in the first place.
+   Special thanks to [Xor-el](https://github.com/xor-el) for making this library avialable in the first place.
