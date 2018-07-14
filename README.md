@@ -76,4 +76,4 @@ This "Software" is Licensed Under  **`MIT License (MIT)`** .
 Conclusion
 --------------------------------------------------
 
-   Special thanks to [Xor-el](https://github.com/xor-el) for making this library avialable in the first place.
+   Special thanks to [Xor-el](https://github.com/xor-el) for making this library available in the first place.
