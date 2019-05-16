@@ -11,22 +11,22 @@ Code Example
 Here is a sample of code which uses `BigIntergerCPP` to calc 2^20.
     
 ```c++
-	#include <iostream>
-	#include "Base/BigInteger.h"
-	
-	using namespae std;
+#include <iostream>
+#include "Base/BigInteger.h"
 
-	int main()
-	{
-		BigInteger::Boot();
+using namespae std;
+
+int main()
+{
+	BigInteger::Boot();
 		
-		BigInteger two("2");
-		BigInteger result = two.Pow(20);
+	BigInteger two("2");
+	BigInteger result = two.Pow(20);
 
-		cout << result.ToString(2) << endl; // output string in Base 2
+	cout << result.ToString(2) << endl; // output string in Base 2
 
-	    return 0;
-	} // end main
+	return 0;
+} // end main
 ```
 
 Note:
