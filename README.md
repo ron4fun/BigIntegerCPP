@@ -10,7 +10,7 @@ Code Example
 
 Here is a sample of code which uses `BigIntergerCPP` to calc 2^20.
     
-
+```c++
 	#include <iostream>
 	#include "Base/BigInteger.h"
 	
@@ -27,7 +27,7 @@ Here is a sample of code which uses `BigIntergerCPP` to calc 2^20.
 
 	    return 0;
 	} // end main
-
+```
 
 Note:
 **Some other functions you might like**
@@ -66,7 +66,7 @@ To run the unit tests, you should have [boost library](http://www.boost.org/) in
      
    You may have noticed that this library needs to Boot firstly before you can begin to use it else it will crash. So, I wrote a wrapper around the BigInteger library called `BigIntegerWrapper` for those who feel they might forget to Boot the library before using it.
 
-###License
+### License
 
 This "Software" is Licensed Under  **`MIT License (MIT)`** .
     
