@@ -10,24 +10,23 @@ Code Example
 
 Here is a sample of code which uses `BigIntergerCPP` to calc 2^20.
     
+```c++
+#include <iostream>
+#include "Base/BigInteger.h"
 
-	#include <iostream>
-	#include "Base/BigInteger.h"
-	
-	using namespae std;
+using namespae std;
 
-	int main()
-	{
-		BigInteger::Boot();
-		
-		BigInteger two("2");
-		BigInteger result = two.Pow(20);
+int main()
+{
+    BigInteger::Boot();
+    
+    BigInteger two("2");
+    BigInteger result = two.Pow(20);
+    cout << result.ToString(2) << endl; // output string in Base 2
 
-		cout << result.ToString(2) << endl; // output string in Base 2
-
-	    return 0;
-	} // end main
-
+    return 0;
+} // end main
+```
 
 Note:
 **Some other functions you might like**
@@ -66,7 +65,7 @@ To run the unit tests, you should have [boost library](http://www.boost.org/) in
      
    You may have noticed that this library needs to Boot firstly before you can begin to use it else it will crash. So, I wrote a wrapper around the BigInteger library called `BigIntegerWrapper` for those who feel they might forget to Boot the library before using it.
 
-###License
+### License
 
 This "Software" is Licensed Under  **`MIT License (MIT)`** .
     
